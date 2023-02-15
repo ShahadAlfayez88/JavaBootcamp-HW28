@@ -29,7 +29,7 @@ public class SecurityConfig {
         return authenticationProvider;
     }
 
-    @Bean
+       @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
         http.csrf().disable()
                 .sessionManagement()
@@ -37,7 +37,7 @@ public class SecurityConfig {
                 .and()
                 .authenticationProvider(authenticationProvider())
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/users/get","/api/v1/users/register","/api/v1/product/update/**","/api/v1/product/add","/api/v1/product/delete/**","/api/v1/product/get","/api/v1/orders/delete/**","/api/v1/orders/changeStatus/**","/api/v1/product/findByid/**").permitAll()
+                .requestMatchers("/api/v1/users/get","/api/v1/users/register","/api/v1/product/update/**","/api/v1/product/add","/api/v1/product/delete/**","/api/v1/product/get","/api/v1/orders/delete/**","/api/v1/orders/get","/api/v1/orders/add/productID/**","/api/v1/orders/update/**","/api/v1/orders/changeStatus/**","/api/v1/product/findByid/**").permitAll()
                 .requestMatchers("/api/v1/users/update","/api/v1/users/get", "/api/v1/users/delete/**",
                         "api/v1/product","/api/v1/product/add","/api/v1/product/update/**","/api/v1/product/delete/**","/api/v1/product/findByid/**","/api/v1/users/all-users","/api/v1/orders/get").hasAuthority("ADMIN")
                 .requestMatchers("/api/v1/user/delete/**","/api/v1/product/add","/api/v1/product/delete/**","/api/v1/product/get","/api/v1/orders","/api/v1/orders/add/productID/**","/api/v1/orders/assign/**","/api/v1/orders/update/**","/api/v1/orders/get").hasAuthority("CUSTOMER")
@@ -50,6 +50,5 @@ public class SecurityConfig {
                 .httpBasic();
         return http.build();
     }
-
 }
 

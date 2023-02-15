@@ -43,13 +43,7 @@ public class OrdersService {
         ordersRepoistory.save(orders);
     }
 
-    public void assignOrder(Integer user_id, Integer orderId, Integer productId){
-        Orders orders = ordersRepoistory.findOrdersById(orderId);
-        Product product = productRepoistory.findProductById(productId);
 
-        orders.setProduct(product);
-        ordersRepoistory.save(orders);
-    }
 
     // update
     public void updateOrder(Integer orderId, Orders orders, Integer userId){

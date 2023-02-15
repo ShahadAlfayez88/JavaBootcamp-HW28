@@ -35,13 +35,6 @@ public class OrdersController {
         return ResponseEntity.status(200).body("Orders have been added");
     }
 
-    // Assign
-    @PutMapping("/assign/{orderId}/{productId}")
-    public ResponseEntity assignOrderToProduct(@AuthenticationPrincipal MyUser myUser,@PathVariable Integer orderId,@PathVariable Integer productId){
-        // user id
-        ordersService.assignOrder(myUser.getId(),orderId,productId);
-        return ResponseEntity.status(200).body("Orders have been assigned");
-    }
 
     // Update
     @PutMapping("/update/{Orders_id}")
